@@ -1,19 +1,18 @@
 /* Regular screen (7:1482) */
+
 :root {
-  /* Design tokens (subset used by this screen) */
+  /* Design tokens used by this screen */
   --r-bg: #adafb3;
   --r-card-bg: #f5f5f5;
   --r-white: #ffffff;
   --r-black: #000000;
 
   --r-border: #e5e5e5;
-  --r-divider: #e6e6e6;
 
   --r-text: #1f1f1f;
   --r-text-disabled: #001754;
 
   --r-accent: #0047ff;
-  --r-hover-bg: #d8e3ff;
 
   --r-shadow-0: 0px 1px 2px 0px #000e33;
   --r-shadow-1: 0px 1px 1px 0px #000e33;
@@ -30,7 +29,7 @@
   font-family: var(--r-font);
 }
 
-/* The design artboard is 1200x800. We preserve ratio and scale down on smaller screens. */
+/* Artboard: 1200x800 */
 .regular71482__frame {
   width: min(1200px, 100%);
   aspect-ratio: 1200 / 800;
@@ -40,10 +39,7 @@
   background: var(--r-bg);
 }
 
-/* Place the two cards exactly as in Figma:
-   Root x=1644.., Light card at x=1812 => left=168
-   Dark card at x=2262 => left=618
-   Both y=-5104 => top=146 (because root y=-5250) */
+/* Cards positioned exactly per YAML (relative to root 7:1482) */
 .calendarCard {
   position: absolute;
   top: 146px;
@@ -63,7 +59,7 @@
   left: 618px;
 }
 
-/* Light mode internal content positions: Components frame at x=1836,y=-5080 => within card: left=24,top=24 */
+/* Light mode inner content (x=1836,y=-5080 => 24,24 inside the 426x396 card) */
 .calendarCard__content {
   position: absolute;
   left: 24px;
@@ -104,7 +100,7 @@
   outline-offset: 2px;
 }
 
-/* CSS chevrons because the light-mode header vectors don't have exported image assets in YAML */
+/* CSS chevrons for light-mode header (no exported SVG paths in YAML for the light instance) */
 .chev {
   position: absolute;
   top: 14px;
@@ -126,6 +122,7 @@
   transform-origin: center;
 }
 
+/* Month/Year container: x=1932.5 => left=96.5 within header */
 .monthYear {
   position: absolute;
   left: 96.5px;
@@ -177,7 +174,7 @@
   transform: translateY(1px);
 }
 
-/* DoW row at y=-5024 => top=56 within components */
+/* DoW row */
 .dow {
   position: absolute;
   left: 0;
@@ -192,13 +189,27 @@
   width: 54px;
   height: 44px;
 }
-.dow__cell:nth-child(1) { left: 0px; }
-.dow__cell:nth-child(2) { left: 54px; }
-.dow__cell:nth-child(3) { left: 108px; }
-.dow__cell:nth-child(4) { left: 162px; }
-.dow__cell:nth-child(5) { left: 216px; }
-.dow__cell:nth-child(6) { left: 270px; }
-.dow__cell:nth-child(7) { left: 324px; }
+.dow__cell:nth-child(1) {
+  left: 0px;
+}
+.dow__cell:nth-child(2) {
+  left: 54px;
+}
+.dow__cell:nth-child(3) {
+  left: 108px;
+}
+.dow__cell:nth-child(4) {
+  left: 162px;
+}
+.dow__cell:nth-child(5) {
+  left: 216px;
+}
+.dow__cell:nth-child(6) {
+  left: 270px;
+}
+.dow__cell:nth-child(7) {
+  left: 324px;
+}
 
 .dow__text {
   position: absolute;
@@ -212,7 +223,7 @@
   color: var(--r-text);
 }
 
-/* Weeks at y=-4968 => top=112 within components */
+/* Weeks grid */
 .weeks {
   position: absolute;
   left: 0;
@@ -226,9 +237,8 @@
   width: 378px;
   height: 44px;
 }
-
 .weekRow + .weekRow {
-  margin-top: 4px; /* Figma y step is 48px */
+  margin-top: 4px; /* Figma uses 48px step */
 }
 
 .dayCell {
@@ -237,16 +247,29 @@
   width: 54px;
   height: 44px;
 }
+.weekRow .dayCell:nth-child(1) {
+  left: 0px;
+}
+.weekRow .dayCell:nth-child(2) {
+  left: 54px;
+}
+.weekRow .dayCell:nth-child(3) {
+  left: 108px;
+}
+.weekRow .dayCell:nth-child(4) {
+  left: 162px;
+}
+.weekRow .dayCell:nth-child(5) {
+  left: 216px;
+}
+.weekRow .dayCell:nth-child(6) {
+  left: 270px;
+}
+.weekRow .dayCell:nth-child(7) {
+  left: 324px;
+}
 
-.weekRow .dayCell:nth-child(1) { left: 0px; }
-.weekRow .dayCell:nth-child(2) { left: 54px; }
-.weekRow .dayCell:nth-child(3) { left: 108px; }
-.weekRow .dayCell:nth-child(4) { left: 162px; }
-.weekRow .dayCell:nth-child(5) { left: 216px; }
-.weekRow .dayCell:nth-child(6) { left: 270px; }
-.weekRow .dayCell:nth-child(7) { left: 324px; }
-
-/* Inner day frame is 50x44 with x offset 2px inside 54px cell */
+/* Inner day frame 50x44 with x offset 2px */
 .dayInner {
   position: absolute;
   left: 2px;
@@ -313,20 +336,4 @@
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
-}
-
-/* Responsiveness:
-   Scale the whole artboard down smoothly while keeping pixel relationships. */
-@media (max-width: 1240px) {
-  .regular71482__frame {
-    transform-origin: top left;
-  }
-}
-
-/* Reduced motion: no animations here, but keep future-safe */
-@media (prefers-reduced-motion: reduce) {
-  .navBtn,
-  .dropdown {
-    scroll-behavior: auto;
-  }
 }
