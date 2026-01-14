@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.0000019073" height="20" viewBox="0 0 20 20">
+  <title>info_outline_vector</title>
+  <circle cx="10" cy="10" r="8.5" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="10" cy="6.5" r="1.1" fill="#ffffff"/>
+  <path d="M10 9v6.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+</svg>

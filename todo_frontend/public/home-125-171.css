@@ -1,0 +1,264 @@
+/* Home Screen (125:171) - standalone pixel-accurate CSS derived from YAML.
+   Root frame: x=1602,y=-823,w=414,h=1100
+*/
+
+:root {
+  /* Colors (design_system_T0015-304526-LufAMTaIcfQhSCZxNflWlW.json) */
+  --hs-bg: #252525;
+  --hs-white: #ffffff;
+  --hs-black: #000000;
+  --hs-btn-bg: #3b3b3b;
+
+  --hs-pink: #ff9e9e;
+  --hs-green: #91f48f;
+  --hs-yellow: #fff599;
+  --hs-cyan: #9effff;
+  --hs-purple: #b69cff;
+
+  /* Shadows (style_39 => shadow_0 + shadow_1) */
+  --hs-shadow-left: -5px 0px 10px 0px rgba(0, 0, 0, 1);
+  --hs-shadow-down: 0px 5px 10px 0px rgba(0, 0, 0, 1);
+
+  /* Typography */
+  --hs-font: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Basic resets for standalone rendering */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--hs-bg); }
+img { display: block; }
+
+/* Screen wrapper */
+.screen-125-171 {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--hs-bg);
+  font-family: var(--hs-font);
+}
+
+/* Fixed artboard ensures pixel accuracy */
+.artboard {
+  width: 414px;
+  height: 1100px;
+  position: relative;
+  overflow: hidden;
+
+  background: var(--hs-bg);
+  border-radius: 30px; /* style_0 */
+}
+
+/* Notes title (125:186)
+   x=1626,y=-776 => left=24, top=47 (relative to root) */
+.heroTitle {
+  position: absolute;
+  left: 24px;
+  top: 47px;
+  width: 115px;
+  height: 59px;
+  margin: 0;
+
+  font-family: var(--hs-font);
+  font-size: 43px; /* typo_14 */
+  font-weight: 600;
+  line-height: 58.65199661254883px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: var(--hs-white);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Icon buttons */
+.iconButton {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  padding: 0;
+  border-radius: 15px; /* style_6 */
+  background: var(--hs-btn-bg);
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+}
+
+.iconButton:focus-visible,
+.fab:focus-visible,
+.noteCard:focus-visible {
+  outline: 3px solid rgba(158, 255, 255, 0.55);
+  outline-offset: 3px;
+}
+
+.iconButton:active {
+  transform: translateY(1px);
+  filter: brightness(0.97);
+}
+
+/* Search button (125:189) at x=1870,y=-772 => left=268 top=51 */
+.iconButton--search {
+  left: 268px;
+  top: 51px;
+}
+
+/* Info button (125:187) at x=1941,y=-772 => left=339 top=51 */
+.iconButton--info {
+  left: 339px;
+  top: 51px;
+}
+
+.iconButton__icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Cards */
+.noteCard {
+  position: absolute;
+  left: 24px; /* all rectangles at x=1626 */
+  width: 365px;
+  border-radius: 10px; /* style_1/3/4/7/8 */
+  overflow: hidden;
+
+  outline: none;
+}
+
+.noteCard__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.noteCard__text {
+  position: absolute;
+  left: 45px; /* text x=1671 => 45 relative to root */
+  margin: 0;
+
+  width: auto;
+  font-family: var(--hs-font);
+  font-size: 25px; /* typo_13 */
+  font-weight: 400;
+  line-height: 34.099998474121094px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: var(--hs-black);
+}
+
+/* Card 1 (125:175) rectangle at y=-680 => top=143, h=157 */
+.noteCard--pink {
+  top: 143px;
+  height: 157px;
+}
+.noteCard--pink .noteCard__bg { background: var(--hs-pink); }
+.noteCard--pink .noteCard__text {
+  top: 25px; /* y=-655 => 168 => within card: 168-143 = 25 */
+  width: 270px;
+  height: 103px;
+}
+
+/* Card 2 (125:178) rectangle at y=-500 => top=323, h=123 */
+.noteCard--green {
+  top: 323px;
+  height: 123px;
+}
+.noteCard--green .noteCard__bg { background: var(--hs-green); }
+.noteCard--green .noteCard__text {
+  top: 29px; /* y=-471 => 352; within card: 352-323=29 */
+  width: 254px;
+  height: 64px;
+}
+
+/* Card 3 (125:180) rectangle at y=-352 => top=471, h=110 */
+.noteCard--yellow {
+  top: 471px;
+  height: 110px;
+}
+.noteCard--yellow .noteCard__bg { background: var(--hs-yellow); }
+.noteCard--yellow .noteCard__text {
+  top: 23px; /* y=-329 => 494; within card: 494-471=23 */
+  width: 259px;
+  height: 67px;
+}
+
+/* Card 4 (136:37) rectangle at y=-217 => top=606, h=120 */
+.noteCard--cyan {
+  top: 606px;
+  height: 120px;
+}
+.noteCard--cyan .noteCard__bg { background: var(--hs-cyan); }
+.noteCard--cyan .noteCard__text {
+  top: 26px; /* y=-191 => 632; within card: 632-606=26 */
+  width: 287px;
+  height: 68px;
+}
+
+/* Card 5 (136:38) rectangle at y=-72 => top=751, h=100 */
+.noteCard--purple {
+  top: 751px;
+  height: 100px;
+}
+.noteCard--purple .noteCard__bg { background: var(--hs-purple); }
+.noteCard--purple .noteCard__text {
+  top: 17px; /* y=-55 => 768; within card: 768-751=17 */
+  width: 297px;
+  height: 66px;
+}
+
+/* Floating Action Button group (125:191 ellipse at x=1911,y=-46 => left=309 top=777) */
+.fab {
+  position: absolute;
+  left: 309px;
+  top: 777px;
+  width: 70px;
+  height: 70px;
+
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+}
+
+.fab:active {
+  transform: translateY(1px);
+}
+
+.fab__circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--hs-bg); /* style_39 bg color_252525 */
+  box-shadow: var(--hs-shadow-left), var(--hs-shadow-down);
+}
+
+.fab__icon {
+  position: absolute;
+  /* icon roughly centered inside 70×70 FAB */
+  left: 13px;
+  top: 13px;
+  width: 48px;
+  height: 48px;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Accessibility helper */
+.srOnly {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
