@@ -1,4 +1,4 @@
-/* Screen-specific JS for home-125-171.
+/* Screen-specific JS for home-125-171 (standalone HTML).
    Adds lightweight interactions without changing layout:
    - Click handlers for buttons (search/info/add)
    - Allows selecting a note card (aria-selected) for keyboard and mouse users
