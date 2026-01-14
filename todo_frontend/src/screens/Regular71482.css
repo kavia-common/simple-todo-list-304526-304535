@@ -1,0 +1,332 @@
+/* Regular screen (7:1482) */
+:root {
+  /* Design tokens (subset used by this screen) */
+  --r-bg: #adafb3;
+  --r-card-bg: #f5f5f5;
+  --r-white: #ffffff;
+  --r-black: #000000;
+
+  --r-border: #e5e5e5;
+  --r-divider: #e6e6e6;
+
+  --r-text: #1f1f1f;
+  --r-text-disabled: #001754;
+
+  --r-accent: #0047ff;
+  --r-hover-bg: #d8e3ff;
+
+  --r-shadow-0: 0px 1px 2px 0px #000e33;
+  --r-shadow-1: 0px 1px 1px 0px #000e33;
+
+  --r-font: "Lexend", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.regular71482 {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--r-bg);
+  padding: 24px;
+  font-family: var(--r-font);
+}
+
+/* The design artboard is 1200x800. We preserve ratio and scale down on smaller screens. */
+.regular71482__frame {
+  width: min(1200px, 100%);
+  aspect-ratio: 1200 / 800;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--r-bg);
+}
+
+/* Place the two cards exactly as in Figma:
+   Root x=1644.., Light card at x=1812 => left=168
+   Dark card at x=2262 => left=618
+   Both y=-5104 => top=146 (because root y=-5250) */
+.calendarCard {
+  position: absolute;
+  top: 146px;
+  width: 426px;
+  height: 396px;
+  border-radius: 16px;
+  background: var(--r-card-bg);
+  box-shadow: var(--r-shadow-0);
+  overflow: hidden;
+}
+
+.calendarCard--light {
+  left: 168px;
+}
+
+.calendarCard--dark {
+  left: 618px;
+}
+
+/* Light mode internal content positions: Components frame at x=1836,y=-5080 => within card: left=24,top=24 */
+.calendarCard__content {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  width: 378px;
+  height: 348px;
+}
+
+.calHeader {
+  position: relative;
+  width: 378px;
+  height: 44px;
+}
+
+.navBtn {
+  position: absolute;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 80px;
+  background: var(--r-white);
+  box-shadow: var(--r-shadow-1);
+  padding: 0;
+  cursor: pointer;
+}
+
+.navBtn--prev {
+  left: 0;
+}
+.navBtn--next {
+  right: 0;
+}
+
+.navBtn:focus-visible,
+.dropdown:focus-visible {
+  outline: 3px solid rgba(0, 71, 255, 0.45);
+  outline-offset: 2px;
+}
+
+/* CSS chevrons because the light-mode header vectors don't have exported image assets in YAML */
+.chev {
+  position: absolute;
+  top: 14px;
+  width: 8px;
+  height: 16px;
+}
+.chev--left {
+  left: 17px;
+  border-left: 2.5px solid var(--r-black);
+  border-top: 2.5px solid var(--r-black);
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+.chev--right {
+  left: 18px;
+  border-right: 2.5px solid var(--r-black);
+  border-top: 2.5px solid var(--r-black);
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+.monthYear {
+  position: absolute;
+  left: 96.5px;
+  top: 0;
+  width: 185px;
+  height: 44px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 0;
+  height: 44px;
+  background: var(--r-white);
+  box-shadow: var(--r-shadow-1);
+  border-radius: 6px;
+  border: 0;
+  padding: 0 12px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dropdown--month {
+  left: 0;
+  width: 93px;
+}
+.dropdown--year {
+  left: 95px;
+  width: 90px;
+}
+
+.dropdown__label {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: -0.24px;
+  color: #141414;
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #141414;
+  transform: translateY(1px);
+}
+
+/* DoW row at y=-5024 => top=56 within components */
+.dow {
+  position: absolute;
+  left: 0;
+  top: 56px;
+  width: 378px;
+  height: 44px;
+}
+
+.dow__cell {
+  position: absolute;
+  top: 0;
+  width: 54px;
+  height: 44px;
+}
+.dow__cell:nth-child(1) { left: 0px; }
+.dow__cell:nth-child(2) { left: 54px; }
+.dow__cell:nth-child(3) { left: 108px; }
+.dow__cell:nth-child(4) { left: 162px; }
+.dow__cell:nth-child(5) { left: 216px; }
+.dow__cell:nth-child(6) { left: 270px; }
+.dow__cell:nth-child(7) { left: 324px; }
+
+.dow__text {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 54px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--r-text);
+}
+
+/* Weeks at y=-4968 => top=112 within components */
+.weeks {
+  position: absolute;
+  left: 0;
+  top: 112px;
+  width: 378px;
+  height: 236px;
+}
+
+.weekRow {
+  position: relative;
+  width: 378px;
+  height: 44px;
+}
+
+.weekRow + .weekRow {
+  margin-top: 4px; /* Figma y step is 48px */
+}
+
+.dayCell {
+  position: absolute;
+  top: 0;
+  width: 54px;
+  height: 44px;
+}
+
+.weekRow .dayCell:nth-child(1) { left: 0px; }
+.weekRow .dayCell:nth-child(2) { left: 54px; }
+.weekRow .dayCell:nth-child(3) { left: 108px; }
+.weekRow .dayCell:nth-child(4) { left: 162px; }
+.weekRow .dayCell:nth-child(5) { left: 216px; }
+.weekRow .dayCell:nth-child(6) { left: 270px; }
+.weekRow .dayCell:nth-child(7) { left: 324px; }
+
+/* Inner day frame is 50x44 with x offset 2px inside 54px cell */
+.dayInner {
+  position: absolute;
+  left: 2px;
+  top: 0;
+  width: 50px;
+  height: 44px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+}
+
+.dayInner--regular {
+  background: var(--r-white);
+  border: 0.5px solid var(--r-border);
+  box-shadow: var(--r-shadow-1);
+}
+
+.dayInner--disabled {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.dayInner--today {
+  background: var(--r-accent);
+  border: 2px solid var(--r-white);
+  box-shadow: none;
+}
+
+.dayText {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--r-text);
+}
+
+.dayText--disabled {
+  color: var(--r-text-disabled);
+}
+
+.dayText--today {
+  color: var(--r-white);
+}
+
+/* Dark-mode raster */
+.calendarCard__raster {
+  position: absolute;
+  inset: 0;
+  width: 426px;
+  height: 396px;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Accessible helper */
+.srOnly {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Responsiveness:
+   Scale the whole artboard down smoothly while keeping pixel relationships. */
+@media (max-width: 1240px) {
+  .regular71482__frame {
+    transform-origin: top left;
+  }
+}
+
+/* Reduced motion: no animations here, but keep future-safe */
+@media (prefers-reduced-motion: reduce) {
+  .navBtn,
+  .dropdown {
+    scroll-behavior: auto;
+  }
+}
